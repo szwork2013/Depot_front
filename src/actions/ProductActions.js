@@ -22,7 +22,7 @@ export function addProduct(product) {
     })
 
     request
-      .post('http://localhost:3002/products')
+      .post('/products')
       .send({table: {data: table}})
       .end( (err, res) => {
         if ( err || !res.ok ) {
@@ -59,7 +59,7 @@ export function saveProduct(id, table) {
     })
 
     request
-      .put('http://localhost:3002/products/' + id)
+      .put('/products/' + id)
       .send({table: {data: table}})
       .end( (err, res) => {
         if ( err || !res.ok ) {
@@ -96,7 +96,7 @@ export function removeProduct(id) {
     })
 
     request
-      .del('http://localhost:3002/products/' + id)
+      .del('/products/' + id)
       .end( (err, res) => {
         if ( err || !res.ok ) {
           console.log('Table didn\'t removed. Status Code: ' + err)
@@ -131,9 +131,11 @@ export function loadProducts(page) {
     })
 
     request
-      .get('http://localhost:3002/products/' + page)
+      .post('/products/' + page)
       .end((err, res) => {
-        if ( err || !res || !res.ok ) {
+        console.log(err)
+        console.log(res)
+        if ( err || !res.ok ) {
           console.log('Looks like there was a problem. Status Code: ' + err)
           dispatch({
             type: LOAD_PRODUCTS_FAILED
@@ -143,7 +145,7 @@ export function loadProducts(page) {
 
         dispatch({
           type: LOAD_PRODUCTS_SUCCESS,
-          productScope: res.body,
+          products: res.body,
           page
         })
       })

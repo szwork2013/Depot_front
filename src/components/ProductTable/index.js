@@ -5,14 +5,14 @@ import IconButton from 'material-ui/IconButton'
 
 export default class ProductTable extends React.Component {
   static propTypes = {
-    products      : React.PropTypes.array.isRequired
+    products : React.PropTypes.array.isRequired
   }
 
   render() {
     const { products } = this.props
 
     return <div>
-      <GridList>
+      <GridList cols="5">
         {
           products.map((product) => {
             return <GridTile
@@ -21,7 +21,7 @@ export default class ProductTable extends React.Component {
               subtitle={<span>price: <b>{product.price}$</b></span>}
               actionIcon={<IconButton><AddToCart color="white" /></IconButton>}
             >
-              <img src={'/src/static/productImg/' + product.img} />
+              <img src={'/productImg/' + product.image_url}/>
             </GridTile>
           })
         }

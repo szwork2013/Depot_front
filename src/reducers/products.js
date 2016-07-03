@@ -16,7 +16,8 @@ import {
 const initialState = {
   productScope  : [],
   wait          : false,
-  currentPage   : 0
+  currentPage   : 0,
+  productLoaded : false
 }
 
 export default function productReducer(state = initialState, action) {
@@ -39,7 +40,7 @@ export default function productReducer(state = initialState, action) {
         ...state,
         pageLoaded: action.page,
         wait: false,
-        tableScope: products
+        productScope: action.products
       }
 
     case ADD_PRODUCT_REQUEST:

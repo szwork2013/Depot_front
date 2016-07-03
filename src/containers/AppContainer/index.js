@@ -18,7 +18,7 @@ export default class AppContainer extends React.Component {
   render() {
     const {history, routes, routerKey, store} = this.props
     return (
-      <MuiThemeProvider style={styles.main}>
+      <MuiThemeProvider className={styles.main}>
         <Provider store={store}>
           <div style={{ height: '100%' }}>
             <Router
