@@ -133,8 +133,6 @@ export function loadProducts(page) {
     request
       .post('/products/' + page)
       .end((err, res) => {
-        console.log(err)
-        console.log(res)
         if ( err || !res.ok ) {
           console.log('Looks like there was a problem. Status Code: ' + err)
           dispatch({

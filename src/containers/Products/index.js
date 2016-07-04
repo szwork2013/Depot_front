@@ -19,8 +19,8 @@ export default class Products extends React.Component {
     const { productScope } = this.props
 
     return <div>
-      <RaisedButton label={"add table"} onTouchTap={() => { this.props.dispatch(push('/new')) }} linkButton={true}
-                    primary={true} icon={<Add />}/>
+      <RaisedButton label={"add product"} onTouchTap={() => { this.props.dispatch(push('/new')) }} linkButton={true}
+                    primary={true} icon={<Add />} style={{margin: '10px'}}/>
       <br />
       <ProductTable products={productScope} />
     </div>

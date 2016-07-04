@@ -12,7 +12,7 @@ export default class ProductTable extends React.Component {
     const { products } = this.props
 
     return <div>
-      <GridList cols="5">
+      <GridList cols="0" style={{margin: '10px'}} cellHeight={270}>
         {
           products.map((product) => {
             return <GridTile
@@ -20,6 +20,7 @@ export default class ProductTable extends React.Component {
               title={product.title}
               subtitle={<span>price: <b>{product.price}$</b></span>}
               actionIcon={<IconButton><AddToCart color="white" /></IconButton>}
+              style={{height: '270px', width: '225px'}}
             >
               <img src={'/productImg/' + product.image_url}/>
             </GridTile>
