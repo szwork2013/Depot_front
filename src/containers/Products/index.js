@@ -6,6 +6,7 @@ import { loadProducts } from '../../actions/ProductActions'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { push } from 'react-router-redux'
+import styles from '../../styles/buttons.scss'
 
 export default class Products extends React.Component {
 
@@ -20,7 +21,7 @@ export default class Products extends React.Component {
 
     return <div>
       <RaisedButton label={"add product"} onTouchTap={() => { this.props.dispatch(push('/new')) }} linkButton={true}
-                    primary={true} icon={<Add />} style={{margin: '10px'}}/>
+                    primary={true} icon={<Add />} className={styles.btn}/>
       <br />
       <ProductTable products={productScope} />
     </div>

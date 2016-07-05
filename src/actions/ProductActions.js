@@ -23,7 +23,7 @@ export function addProduct(product) {
 
     request
       .post('/products')
-      .send({table: {data: table}})
+      .send({product: product})
       .end( (err, res) => {
         if ( err || !res.ok ) {
           console.log('Table didn\'t added. Status Code: ' + err)
@@ -46,7 +46,7 @@ export function addProduct(product) {
         dispatch({
           type: ADD_PRODUCT_SUCCESS,
           id  : response.id,
-          table
+          product
         })
       })
   }

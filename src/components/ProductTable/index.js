@@ -8,11 +8,19 @@ export default class ProductTable extends React.Component {
     products : React.PropTypes.array.isRequired
   }
 
+  pathToImg = (path) => {
+    if ( path.search( /^http/i ) == -1 ) {
+      return '/productImg/' + path
+    } else {
+      return path
+    }
+  }
+
   render() {
     const { products } = this.props
 
     return <div>
-      <GridList cols="0" style={{margin: '10px'}} cellHeight={270}>
+      <GridList cols="0" style={{marginBottom: '10px', marginTop: '10px'}} cellHeight={270}>
         {
           products.map((product) => {
             return <GridTile
@@ -22,7 +30,7 @@ export default class ProductTable extends React.Component {
               actionIcon={<IconButton><AddToCart color="white" /></IconButton>}
               style={{height: '270px', width: '225px'}}
             >
-              <img src={'/productImg/' + product.image_url}/>
+              <img src={this.pathToImg(product.image_url)} />
             </GridTile>
           })
         }
