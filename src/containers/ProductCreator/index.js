@@ -12,10 +12,6 @@ import styles from '../../styles/buttons.scss'
 
 export default class ProductCreator extends ProductManipulator {
 
-  state = {
-    product: {}
-  }
-
   _addProduct = () => {
     this.props.addProduct(this.state.product)
     this.props.dispatch(push('/'))
@@ -25,9 +21,10 @@ export default class ProductCreator extends ProductManipulator {
     return <div>
       <Product product     = {this.state.product}
                updateField = {this.updateField}
+               errorText   = {this.state.errorText}
       />
       <br clear="left" />
-      <RaisedButton label="save product" onTouchTap={this._addProduct} linkButton={true} primary={true} icon={<Save/>} className={styles.btn}/>
+      <RaisedButton label="save product" onTouchTap={this._addProduct} linkButton={true} primary={true} disabled={this.isInvalid()} icon={<Save/>} className={styles.btn}/>
       <RaisedButton label="back" onTouchTap={() => { this.props.dispatch(push('/')) }} linkButton={true} secondary={true} icon={<Back/>} className={styles.btn}/>
     </div>
   }

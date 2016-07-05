@@ -5,7 +5,8 @@ import IconButton from 'material-ui/IconButton'
 
 export default class ProductTable extends React.Component {
   static propTypes = {
-    products : React.PropTypes.array.isRequired
+    products  : React.PropTypes.array.isRequired,
+    addToCart : React.PropTypes.func.isRequired
   }
 
   pathToImg = (path) => {
@@ -14,6 +15,10 @@ export default class ProductTable extends React.Component {
     } else {
       return path
     }
+  }
+
+  addToCart = (product) => {
+    this.props.addToCart(product)
   }
 
   render() {
@@ -27,7 +32,7 @@ export default class ProductTable extends React.Component {
               key={product.id}
               title={product.title}
               subtitle={<span>price: <b>{product.price}$</b></span>}
-              actionIcon={<IconButton><AddToCart color="white" /></IconButton>}
+              actionIcon={<IconButton onTouchTap={this.addToCart.bind(this, product)}><AddToCart color="white" /></IconButton>}
               style={{height: '270px', width: '225px'}}
             >
               <img src={this.pathToImg(product.image_url)} />

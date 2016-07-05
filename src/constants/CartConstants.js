@@ -1,0 +1,6 @@
+export const LOAD_CART_REQUEST     = 'LOAD_CART_REQUEST'
+export const LOAD_CART_SUCCESS     = 'LOAD_CART_SUCCESS'
+export const LOAD_CART_FAILED      = 'LOAD_CART_FAILED'
+export const ADD_TO_CART           = 'ADD_TO_CART'
+export const REMOVE_FROM_CART      = 'REMOVE_FROM_CART'
+export const CLEAR_CART            = 'CLEAR_CART'
