@@ -5,6 +5,7 @@ import Products from '../containers/Products'
 import ProductCreator from '../containers/ProductCreator'
 import Cart from '../containers/Cart'
 //import ProductEditor from '../containers/ProductEditor'
+import Order from '../containers/Order'
 import NotFound from '../components/NotFound'
 export const routes = (
   <div>
@@ -12,6 +13,7 @@ export const routes = (
       <IndexRoute component={Products} />
       <Route path='/new' component={ProductCreator} />
       {/*<Route path='/edit/:id' component={ProductEditor} />*/}
+      <Route path='/order' component={Order}/>
       <Route path='/cart' component={Cart} />
     </Route>
     <Route path='*' component={NotFound} />

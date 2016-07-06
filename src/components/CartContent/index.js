@@ -18,6 +18,7 @@ export default class CartContent extends React.Component {
 
   render() {
     const { cart, removeFromCart } = this.props
+    let total = 0
 
     if ( cart.length == 0 ) {
       return <div style={{fontSize: '1.5em'}}>
@@ -28,11 +29,12 @@ export default class CartContent extends React.Component {
     return <div>
       {
         cart.map((item, index) => {
+          total += item.price*item.amount
           return <div>
             <Card key={index}>
               <CardHeader
                 title={item.title}
-                subtitle={item.price + '$'}
+                subtitle={item.price*item.amount + '$'}
                 actAsExpander={true}
                 showExpandableButton={true}
               />
@@ -54,6 +56,7 @@ export default class CartContent extends React.Component {
           </div>
         })
       }
+      total: {total}
     </div>
   }
 }
