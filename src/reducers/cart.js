@@ -36,7 +36,6 @@ export default function cartReducer(state = initialState, action) {
 
     case ADD_TO_CART:
       localStorage.setItem('cart', JSON.stringify({ids: getIds().concat( action.product.id )} ) )
-      console.log(localStorage)
       return {
         ...state,
         cart : state.cart.concat( action.product )

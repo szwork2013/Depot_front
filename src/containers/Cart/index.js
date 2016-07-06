@@ -6,6 +6,9 @@ import Buy from 'material-ui/svg-icons/action/shopping-cart'
 import Clear from 'material-ui/svg-icons/action/remove-shopping-cart'
 import Back from 'material-ui/svg-icons/content/backspace'
 import { clearCart, removeFromCart } from '../../actions/CartActions'
+import CartContent from '../../components/CartContent'
+import styles from '../../styles/buttons.scss'
+import { push } from 'react-router-redux'
 
 export default class Cart extends React.Component {
 
@@ -17,9 +20,9 @@ export default class Cart extends React.Component {
     }
 
     return <div>
-      <CartContent cart={cart} removeItem={removeFromCart} />
-      <RaisedButton label="buy" linkButton={true} primary={true} disabled={cart.length == 0} icon={<Buy />} className={styles.btn}/>
-      <RaisedButton label="clear" onTouchTap={clearCart} linkButton={true} secondary={true} disabled={cart.length == 0} icon={<Clear />} className={styles.btn}/>
+      <CartContent cart={cart} removeFromCart={removeFromCart} />
+      <RaisedButton label="buy all" linkButton={true} primary={true} disabled={cart.length == 0} icon={<Buy />} className={styles.btn}/>
+      <RaisedButton label="clear all" onTouchTap={clearCart} linkButton={true} secondary={true} disabled={cart.length == 0} icon={<Clear />} className={styles.btn}/>
       <RaisedButton label="back" onTouchTap={() => { this.props.dispatch(push('/')) }} linkButton={true} icon={<Back />} className={styles.btn}/>
     </div>
   }

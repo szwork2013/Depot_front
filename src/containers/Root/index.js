@@ -7,7 +7,6 @@ import { loadCart } from '../../actions/CartActions'
 
 class Root extends React.Component {
   componentWillMount = () => {
-    localStorage.clear()
     if( !localStorage.getItem('cart') ) {
       localStorage.setItem( 'cart', JSON.stringify({ids: []}) )
     }
