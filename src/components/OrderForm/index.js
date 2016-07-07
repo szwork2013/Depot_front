@@ -19,7 +19,6 @@ export default class OrderForm extends React.Component {
   }
 
   updatePayType = (event, index, value) => {
-    console.log(index)
     this.props.updateField( 'pay_type', value )
   }
 

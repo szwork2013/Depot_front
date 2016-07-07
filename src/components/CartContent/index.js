@@ -16,6 +16,10 @@ export default class CartContent extends React.Component {
     }
   }
 
+  onLoadError = (event) => {
+    event.target.src='/productImg/ImgNotFound2.jpg'
+  }
+
   render() {
     const { cart, removeFromCart } = this.props
     let total = 0
@@ -42,13 +46,13 @@ export default class CartContent extends React.Component {
                 expandable={true}
                 style={{height: '180px', width: '150px', padding: '5px', marginRight: '10px', float: 'left'}}
               >
-                <img src={this.pathToImg(item.image_url)} />
+                <img src={this.pathToImg(item.image_url)} onError={this.onLoadError} />
               </CardMedia>
               <CardText expandable={true}>
                 <span style={{marginLeft: '16px', marginRight: '16px'}}>{item.description}</span>
               </CardText>
               <CardActions expandable={true}>
-                <FlatButton label="Remove From Cart" secondary={true} onTouchTap={removeFromCart.bind(this, item.id)}/>
+                <FlatButton label="Remove From Cart" secondary={true} onTouchTap={removeFromCart.bind(this, item.id)} />
               </CardActions>
               <br style={{clear: 'left'}} expandable={true} />
             </Card>

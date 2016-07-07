@@ -8,8 +8,9 @@ import styles from '../../styles/buttons.scss'
 import { push } from 'react-router-redux'
 import OrderForm from '../../components/OrderForm'
 import update from 'react-addons-update'
+import { doOrder } from '../../actions/OrderActions'
 
-export default class Order extends React.Component {
+class OrderCreator extends React.Component {
   state = {
     customer: {},
     errorText: {},
@@ -30,7 +31,7 @@ export default class Order extends React.Component {
 
   updateField = ( name, value ) => {
     const { customer, errorText, valid } = this.state
-    const newErrorMsg = ( this.validate( name, value ) ) ? '' : Order.errorMessages[name]
+    const newErrorMsg = ( this.validate( name, value ) ) ? '' : OrderCreator.errorMessages[name]
 
     this.setState({
       customer   : update(customer, {[name]: {$set: value}}),
@@ -64,13 +65,18 @@ export default class Order extends React.Component {
     return false
   }
 
+  doOrder = () => {
+    this.props.doOrder( this.state.customer, this.props.cart )
+    this.props.dispatch(push('/'))
+  }
+
   render() {
     const { cart } = this.props
     const { errorText } = this.state
 
     return <div>
       <OrderForm cart={cart} customer={this.state.customer} errorText={errorText} updateField={this.updateField} />
-      <RaisedButton label="buy" linkButton={true} primary={true} disabled={this.isInvalid()} icon={<Ok />} className={styles.btn}/>
+      <RaisedButton label="buy" onTouchTap={this.doOrder} linkButton={true} primary={true} disabled={this.isInvalid()} icon={<Ok />} className={styles.btn}/>
       <RaisedButton label="back" onTouchTap={() => { this.props.dispatch(push('/cart')) }} linkButton={true} icon={<Back />} className={styles.btn}/>
     </div>
   }
@@ -84,8 +90,9 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch : dispatch
+    dispatch : dispatch,
+    doOrder  : bindActionCreators(doOrder, dispatch)
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Order)
+export default connect(mapStateToProps, mapDispatchToProps)(OrderCreator)

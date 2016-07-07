@@ -22,7 +22,7 @@ export function addProduct(product) {
     })
 
     request
-      .post('/products')
+      .post('/api/products')
       .send({product: product})
       .end( (err, res) => {
         if ( err || !res.ok ) {
@@ -59,7 +59,7 @@ export function saveProduct(id, table) {
     })
 
     request
-      .put('/products/' + id)
+      .put('/api/products/' + id)
       .send({table: {data: table}})
       .end( (err, res) => {
         if ( err || !res.ok ) {
@@ -96,7 +96,7 @@ export function removeProduct(id) {
     })
 
     request
-      .del('/products/' + id)
+      .del('/api/products/' + id)
       .end( (err, res) => {
         if ( err || !res.ok ) {
           console.log('Table didn\'t removed. Status Code: ' + err)
@@ -131,7 +131,7 @@ export function loadProducts(page) {
     })
 
     request
-      .post('/products/' + page)
+      .post('/api/products/' + page)
       .end((err, res) => {
         if ( err || !res.ok ) {
           console.log('Looks like there was a problem. Status Code: ' + err)

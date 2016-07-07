@@ -21,7 +21,7 @@ export default class Cart extends React.Component {
 
     return <div>
       <CartContent cart={cart} removeFromCart={removeFromCart} />
-      <RaisedButton label="buy all" onTouchTap={() => { this.props.dispatch(push('/order')) }} linkButton={true} primary={true} disabled={cart.length == 0} icon={<Buy />} className={styles.btn}/>
+      <RaisedButton label="buy all" onTouchTap={() => { this.props.dispatch(push('/orders/new')) }} linkButton={true} primary={true} disabled={cart.length == 0} icon={<Buy />} className={styles.btn}/>
       <RaisedButton label="clear all" onTouchTap={clearCart} linkButton={true} secondary={true} disabled={cart.length == 0} icon={<Clear />} className={styles.btn}/>
       <RaisedButton label="back" onTouchTap={() => { this.props.dispatch(push('/')) }} linkButton={true} icon={<Back />} className={styles.btn}/>
     </div>

@@ -24,7 +24,7 @@ export function loadCart(ids) {
     }
 
     request
-      .post('/products/show')
+      .post('/api/products/show')
       .send({ids: ids})
       .end((err, res) => {
         if ( err || !res.ok ) {

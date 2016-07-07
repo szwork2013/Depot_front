@@ -14,7 +14,7 @@ export default {
       enabled: true,
       options: {
         host: 'http://localhost:3002',
-        match: /^\/products/
+        match: /^\/api/
       }
     }
   }),
