@@ -4,10 +4,14 @@ import update from 'react-addons-update'
 export default class ProductManipulator extends Component {
 
   state = {
-    errorText: {
-      ...ProductManipulator.errorMessages
-    },
-    product: {}
+    errorText: {},
+    product: {},
+    valid: {
+      title       : false,
+      description : false,
+      price       : false,
+      image_url   : false
+    }
   }
 
   static errorMessages = {
@@ -18,12 +22,13 @@ export default class ProductManipulator extends Component {
   }
 
   updateField = ( name, value ) => {
-    const { product, errorText } = this.state
+    const { product, errorText, valid } = this.state
     const newErrorMsg = ( this.validate( name, value ) ) ? '' : ProductManipulator.errorMessages[name]
 
     this.setState({
       product   : update(product, {[name]: {$set: value}}),
-      errorText : update(errorText, {[name]: {$set: newErrorMsg}})
+      errorText : update(errorText, {[name]: {$set: newErrorMsg}}),
+      valid     : update(valid, {[name]: {$set: newErrorMsg === ''}})
     })
   }
 
@@ -33,7 +38,7 @@ export default class ProductManipulator extends Component {
       case 'description':
         return value.length > 0
       case 'price':
-        return value.search( /^\d+(\.\d{1,2})?$/i ) != -1 && value.length > 0 && value > 0
+        return value.search( /^\d+(\.\d{1,2})?$/i ) != -1 && value > 0
       case 'image_url':
         return value.search( /^http.*\.(gif|jpg|png)$/i ) != -1
       default:
@@ -42,10 +47,12 @@ export default class ProductManipulator extends Component {
   }
 
   isInvalid = () => {
-    const errorText = this.state.errorText
+    const valid = this.state.valid
 
-    for ( let key in errorText ) {
-      if ( errorText[key] !== '' ) return true
+    for ( let key in valid ) {
+      if ( !valid[key] ) {
+        return true
+      }
     }
     return false
   }
