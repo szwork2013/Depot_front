@@ -38,7 +38,7 @@ export default function productReducer(state = initialState, action) {
     case LOAD_PRODUCTS_SUCCESS:
       return {
         ...state,
-        pageLoaded: action.page,
+        currentPage: action.page,
         wait: false,
         productScope: action.products
       }

@@ -9,6 +9,7 @@ import { push } from 'react-router-redux'
 import OrderForm from '../../components/OrderForm'
 import update from 'react-addons-update'
 import { doOrder } from '../../actions/OrderActions'
+import { clearCart } from '../../actions/CartActions'
 
 class OrderCreator extends React.Component {
   state = {
@@ -67,6 +68,7 @@ class OrderCreator extends React.Component {
 
   doOrder = () => {
     this.props.doOrder( this.state.customer, this.props.cart )
+    this.props.clearCart()
     this.props.dispatch(push('/'))
   }
 
@@ -91,7 +93,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     dispatch : dispatch,
-    doOrder  : bindActionCreators(doOrder, dispatch)
+    doOrder  : bindActionCreators(doOrder, dispatch),
+    clearCart: bindActionCreators(clearCart, dispatch)
   }
 }
 

@@ -22,9 +22,11 @@ export default function cartReducer(state = initialState, action) {
       }
 
     case LOAD_CART_FAILED:
+      localStorage.setItem( 'cart', JSON.stringify({ids: []}) )
       return {
         ...state,
-        cartLoaded : false
+        cartLoaded : true,
+        cart       : []
       }
 
     case LOAD_CART_SUCCESS:
