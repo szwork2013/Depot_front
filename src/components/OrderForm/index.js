@@ -35,7 +35,7 @@ export default class OrderForm extends React.Component {
           {
             cart.map((product, index) => {
               total += product.price*product.amount
-              return <ListItem key={index} primaryText={product.title}
+              return <ListItem key={index} primaryText={product.amount + ' x ' + product.title}
                                secondaryText={'price: ' + product.price*product.amount + '$'} disabled={true} />
             })
           }

@@ -16,7 +16,12 @@ export function doOrder( customer, cart ) {
       .post('/api/orders')
       .send({
         customer: customer,
-        cart    : cart
+        cart    : cart.map((item) => {
+          return {
+            id    : item.id,
+            amount: item.amount
+          }
+        })
       })
       .end((err, res) => {
         if ( err || !res.ok ) {

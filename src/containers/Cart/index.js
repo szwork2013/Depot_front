@@ -16,7 +16,8 @@ export default class Cart extends React.Component {
     const { cartLoaded, cart, clearCart, removeFromCart } = this.props
 
     if ( !cartLoaded ) {
-        console.log('What???? WWWHHHHAAAAATTTT!!! CART DIDn\'t LOADED?!?!?! WHAT THE FU$!@%G S**T!!!')
+      console.log('What???? WWWHHHHAAAAATTTT!!! CART DIDn\'t LOADED?!?!?! WHAT THE FU$!@%G S**T!!!')
+      clearCart()
     }
 
     return <div>
