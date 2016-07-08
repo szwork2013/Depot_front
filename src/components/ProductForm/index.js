@@ -20,14 +20,14 @@ export default class ProductForm extends React.Component {
     return <div>
       <TextField
         name='title'
-        floatingLabelText="Title"
+        floatingLabelText='Title'
         value={product.title}
         onChange={this.updateField}
         errorText={errorText.title}
       /><br />
       <TextField
         name='description'
-        floatingLabelText="Description"
+        floatingLabelText='Description'
         multiLine={true}
         value={product.description}
         onChange={this.updateField}
@@ -35,14 +35,14 @@ export default class ProductForm extends React.Component {
       /><br />
       <TextField
         name='price'
-        floatingLabelText="Price"
+        floatingLabelText='Price'
         value={product.price}
         onChange={this.updateField}
         errorText={errorText.price}
       /><br />
       <TextField
         name='image_url'
-        floatingLabelText="Image Url"
+        floatingLabelText='Image Url'
         multiLine={true}
         value={product.image_url}
         onChange={this.updateField}

@@ -52,7 +52,7 @@ export default class CartContent extends React.Component {
                 <span style={{marginLeft: '16px', marginRight: '16px'}}>{item.description}</span>
               </CardText>
               <CardActions expandable={true}>
-                <FlatButton label="Remove From Cart" secondary={true} onTouchTap={removeFromCart.bind(this, item.id)} />
+                <FlatButton label='Remove From Cart' secondary={true} onTouchTap={removeFromCart.bind(this, item.id)} />
               </CardActions>
               <br style={{clear: 'left'}} expandable={true} />
             </Card>

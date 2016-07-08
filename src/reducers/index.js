@@ -3,12 +3,14 @@ import { routerReducer as router } from 'react-router-redux'
 import products from './products'
 import carts from './carts'
 import orders from './orders'
+import users from './users'
 
 export const makeRootReducer = (asyncReducers) => {
   return combineReducers({
     products,
     carts,
     orders,
+    users,
     router,
     ...asyncReducers
   })

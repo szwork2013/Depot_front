@@ -26,7 +26,7 @@ export function addProduct(product) {
       .send({product: product})
       .end( (err, res) => {
         if ( err || !res.ok ) {
-          console.log('Table didn\'t added. Status Code: ' + err)
+          console.log('Product didn\'t added. Status Code: ' + err)
           dispatch({
             type: ADD_PRODUCT_FAILED
           })
@@ -36,7 +36,7 @@ export function addProduct(product) {
         const response = res.body
 
         if (response.status == 'failed') {
-          console.log('Table didn\'t added. Errors: ' + response.errors)
+          console.log('Product didn\'t added. Errors: ' + response.errors)
           dispatch({
             type: ADD_PRODUCT_FAILED
           })
@@ -52,7 +52,7 @@ export function addProduct(product) {
   }
 }
 
-export function saveProduct(id, table) {
+export function saveProduct(id, product) {
   return (dispatch) => {
     dispatch({
       type: SAVE_PRODUCT_REQUEST
@@ -60,10 +60,10 @@ export function saveProduct(id, table) {
 
     request
       .put('/api/products/' + id)
-      .send({table: {data: table}})
+      .send({product: product})
       .end( (err, res) => {
         if ( err || !res.ok ) {
-          console.log('Table didn\'t saved. Status Code: ' + err)
+          console.log('Product didn\'t saved. Status Code: ' + err)
           dispatch({
             type: SAVE_PRODUCT_FAILED
           })
@@ -73,7 +73,7 @@ export function saveProduct(id, table) {
         const response = res.body
 
         if (response.status == 'failed') {
-          console.log('Table didn\'t saved. Errors: ' + response.errors)
+          console.log('Product didn\'t saved. Errors: ' + response.errors)
           dispatch({
             type: SAVE_PRODUCT_FAILED
           })
@@ -83,7 +83,7 @@ export function saveProduct(id, table) {
         dispatch({
           type: SAVE_PRODUCT_SUCCESS,
           id,
-          table
+          product
         })
       })
   }
@@ -99,7 +99,7 @@ export function removeProduct(id) {
       .del('/api/products/' + id)
       .end( (err, res) => {
         if ( err || !res.ok ) {
-          console.log('Table didn\'t removed. Status Code: ' + err)
+          console.log('Product didn\'t removed. Status Code: ' + err)
           dispatch({
             type: REMOVE_PRODUCT_FAILED
           })
@@ -109,7 +109,7 @@ export function removeProduct(id) {
         const response = res.body
 
         if (response.status == 'failed') {
-          console.log('Table didn\'t removed. Errors: ' + response.errors)
+          console.log('Product didn\'t removed. Errors: ' + response.errors)
           dispatch({
             type: REMOVE_PRODUCT_FAILED
           })

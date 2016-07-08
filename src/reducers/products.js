@@ -77,11 +77,11 @@ export default function productReducer(state = initialState, action) {
       return {
         ...state,
         wait: false,
-        tableScope: state.tableScope.map( function(product) {
+        productScope: state.productScope.map( function(product) {
           if ( product.id == action.id ) {
             return {
               id: action.id,
-              data: action.product
+              ...action.product
             }
           }
           return product

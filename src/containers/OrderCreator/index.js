@@ -78,15 +78,15 @@ class OrderCreator extends React.Component {
 
     return <div>
       <OrderForm cart={cart} customer={this.state.customer} errorText={errorText} updateField={this.updateField} />
-      <RaisedButton label="buy" onTouchTap={this.doOrder} linkButton={true} primary={true} disabled={this.isInvalid()} icon={<Ok />} className={styles.btn}/>
-      <RaisedButton label="back" onTouchTap={() => { this.props.dispatch(push('/cart')) }} linkButton={true} icon={<Back />} className={styles.btn}/>
+      <RaisedButton label='buy' onTouchTap={this.doOrder} linkButton={true} primary={true} disabled={this.isInvalid()} icon={<Ok />} className={styles.btn}/>
+      <RaisedButton label='back' onTouchTap={() => { this.props.dispatch(push('/cart')) }} linkButton={true} icon={<Back />} className={styles.btn}/>
     </div>
   }
 }
 
 function mapStateToProps(state) {
   return {
-    cart : state.cart.cart
+    cart : state.carts.cart
   }
 }
 

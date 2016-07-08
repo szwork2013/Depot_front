@@ -5,14 +5,16 @@ import Products from '../containers/Products'
 import ProductCreator from '../containers/ProductCreator'
 import Cart from '../containers/Cart'
 //import ProductEditor from '../containers/ProductEditor'
+import UserCreator from '../containers/UserCreator'
 import OrderCreator from '../containers/OrderCreator'
 import NotFound from '../components/NotFound'
 export const routes = (
   <div>
     <Route path='/' component={Root}>
       <IndexRoute component={Products} />
-      <Route path='/new' component={ProductCreator} />
-      {/*<Route path='/edit/:id' component={ProductEditor} />*/}
+      <Route path='/products/new' component={ProductCreator} />
+      {/*<Route path='/products/edit/:id' component={ProductEditor} />*/}
+      <Route path='/users/new' component={UserCreator} />
       <Route path='/orders/new' component={OrderCreator}/>
       <Route path='/cart' component={Cart} />
     </Route>

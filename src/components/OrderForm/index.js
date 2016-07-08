@@ -22,8 +22,6 @@ export default class OrderForm extends React.Component {
     this.props.updateField( 'pay_type', value )
   }
 
-
-
   render() {
     const { customer, errorText, cart } = this.props
     let total = 0
@@ -46,21 +44,21 @@ export default class OrderForm extends React.Component {
 
       <TextField
         name='name'
-        floatingLabelText="Name"
+        floatingLabelText='Name'
         value={customer.name}
         onChange={this.updateField}
         errorText={errorText.name}
       /><br />
       <TextField
         name='email'
-        floatingLabelText="Email"
+        floatingLabelText='Email'
         value={customer.email}
         onChange={this.updateField}
         errorText={errorText.email}
       /><br />
       <TextField
         name='address'
-        floatingLabelText="Address"
+        floatingLabelText='Address'
         value={customer.address}
         multiLine={true}
         onChange={this.updateField}
@@ -68,13 +66,13 @@ export default class OrderForm extends React.Component {
       /><br />
       <SelectField value={customer.pay_type} onChange={this.updatePayType} floatingLabelText='Pay type'>
         <MenuItem value={'Credit card'} primaryText='Credit card' />
-        <MenuItem value={'Check'} primaryText="Check" />
-        <MenuItem value={'Purchase order'} primaryText="Purchase order" />
+        <MenuItem value={'Check'} primaryText='Check' />
+        <MenuItem value={'Purchase order'} primaryText='Purchase order' />
       </SelectField>
       <br />
       <TextField
         name='comment'
-        floatingLabelText="Comment (not required)"
+        floatingLabelText='Comment (not required)'
         multiLine={true}
         value={customer.comment}
         onChange={this.updateField}

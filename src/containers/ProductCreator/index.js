@@ -24,9 +24,9 @@ export default class ProductCreator extends ProductManipulator {
                updateField = {this.updateField}
                errorText   = {this.state.errorText}
       />
-      <br clear="left" />
-      <RaisedButton label="save product" onTouchTap={this._addProduct} linkButton={true} primary={true} disabled={this.isInvalid()} icon={<Save/>} className={styles.btn}/>
-      <RaisedButton label="back" onTouchTap={() => { this.props.dispatch(push('/')) }} linkButton={true} icon={<Back/>} className={styles.btn}/>
+      <br clear='left' />
+      <RaisedButton label='save product' onTouchTap={this._addProduct} linkButton={true} primary={true} disabled={this.isInvalid()} icon={<Save/>} className={styles.btn}/>
+      <RaisedButton label='back' onTouchTap={() => { this.props.dispatch(push('/')) }} linkButton={true} icon={<Back/>} className={styles.btn}/>
     </div>
   }
 }

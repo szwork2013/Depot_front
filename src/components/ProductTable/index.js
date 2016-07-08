@@ -30,9 +30,9 @@ export default class ProductTable extends React.Component {
 
   drawActionIcon = (product) => {
     if ( this.props.cartIds.some( (id) => { return product.id === id } ) ) {
-      return <IconButton onTouchTap={this.alreadyInCart.bind(this, product)}><Done color="white" /></IconButton>
+      return <IconButton onTouchTap={this.alreadyInCart.bind(this, product)}><Done color='white' /></IconButton>
     } else {
-      return <IconButton onTouchTap={this.addToCart.bind(this, product)}><AddToCart color="white" /></IconButton>
+      return <IconButton onTouchTap={this.addToCart.bind(this, product)}><AddToCart color='white' /></IconButton>
     }
   }
 

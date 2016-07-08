@@ -45,14 +45,14 @@ class Products extends React.Component {
     const { productScope, cart } = this.props
 
     return <div>
-      <RaisedButton label={"add product"} onTouchTap={() => { this.props.dispatch(push('/new')) }} linkButton={true}
+      <RaisedButton label={'add product'} onTouchTap={() => { this.props.dispatch(push('/products/new')) }} linkButton={true}
                     primary={true} icon={<Add />} className={styles.btn}/>
-      <RaisedButton label={"cart"} onTouchTap={() => { this.props.dispatch(push('/cart')) }} linkButton={true}
-                    backgroundColor="#a4c639" labelColor={fullWhite} icon={<Cart />} className={styles.btn}/>
+      <RaisedButton label={'cart'} onTouchTap={() => { this.props.dispatch(push('/cart')) }} linkButton={true}
+                    backgroundColor='#a4c639' labelColor={fullWhite} icon={<Cart />} className={styles.btn}/>
       <br />
       <ProductTable products={productScope} addToCart={this.addToCart}
                     alreadyInCart={this.alreadyInCart} cartIds={cart.map( (product) => { return product.id } )} />
-      <NotificationSystem ref="notificationSystem" />
+      <NotificationSystem ref='notificationSystem' />
     </div>
   }
 }
@@ -62,7 +62,7 @@ function mapStateToProps(state) {
     productScope  : state.products.productScope,
     currentPage   : state.products.currentPage,
     wait          : state.products.wait,
-    cart          : state.cart.cart,
+    cart          : state.carts.cart,
     productLoaded : state.products.productLoaded
   }
 }
