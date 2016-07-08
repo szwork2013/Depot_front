@@ -26,6 +26,7 @@ const MOUNT_NODE = document.getElementById('canvas')
 
 let render = (routerKey = null) => {
   const routes = require('./routes')
+
   ReactDOM.render(
     <AppContainer
       store={store}

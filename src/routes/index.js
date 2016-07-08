@@ -8,17 +8,22 @@ import Cart from '../containers/Cart'
 import UserCreator from '../containers/UserCreator'
 import OrderCreator from '../containers/OrderCreator'
 import NotFound from '../components/NotFound'
-export const routes = (
-  <div>
-    <Route path='/' component={Root}>
-      <IndexRoute component={Products} />
-      <Route path='/products/new' component={ProductCreator} />
-      {/*<Route path='/products/edit/:id' component={ProductEditor} />*/}
-      <Route path='/users/new' component={UserCreator} />
-      <Route path='/orders/new' component={OrderCreator}/>
-      <Route path='/cart' component={Cart} />
-    </Route>
-    <Route path='*' component={NotFound} />
-  </div>
-)
+
+export const routes = ([
+  {
+    path: '/',
+    component: Root,
+    indexRoute: { component: Products },
+    childRoutes: [
+      { path: 'products/new', component: ProductCreator },
+      { path: 'users/new',    component: UserCreator },
+      { path: 'orders/new',   component: OrderCreator },
+      { path: 'cart',         component: Cart }
+    ]
+  },
+  {
+    path: '*',
+    component: NotFound
+  }
+])
 
