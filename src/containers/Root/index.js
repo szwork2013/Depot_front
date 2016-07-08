@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Header from '../../components/Header'
+import { push } from 'react-router-redux'
 import styles from './root.scss'
 import { loadCart } from '../../actions/CartActions'
 
@@ -13,9 +14,13 @@ class Root extends React.Component {
     this.props.loadCart(JSON.parse(localStorage.getItem('cart')).ids)
   }
 
+  redirect = (path) => {
+    this.props.dispatch(push(path))
+  }
+
   render() {
     return <div>
-      <Header />
+      <Header redirect={this.redirect}  />
       <div className={styles.container}>
         {this.props.children}
       </div>
@@ -25,7 +30,8 @@ class Root extends React.Component {
 
 function mapDispatchToProps(dispatch) {
   return {
-    loadCart : bindActionCreators(loadCart, dispatch)
+    loadCart : bindActionCreators(loadCart, dispatch),
+    dispatch : dispatch
   }
 }
 

@@ -1,7 +1,6 @@
 import React from 'react'
 import RaisedButton from 'material-ui/RaisedButton'
 import Add from 'material-ui/svg-icons/action/note-add'
-import Cart from 'material-ui/svg-icons/action/shopping-basket'
 import {fullWhite} from 'material-ui/styles/colors'
 import ProductTable from '../../components/ProductTable'
 import { loadProducts } from '../../actions/ProductActions'
@@ -47,8 +46,6 @@ class Products extends React.Component {
     return <div>
       <RaisedButton label={'add product'} onTouchTap={() => { this.props.dispatch(push('/products/new')) }} linkButton={true}
                     primary={true} icon={<Add />} className={styles.btn}/>
-      <RaisedButton label={'cart'} onTouchTap={() => { this.props.dispatch(push('/cart')) }} linkButton={true}
-                    backgroundColor='#a4c639' labelColor={fullWhite} icon={<Cart />} className={styles.btn}/>
       <br />
       <ProductTable products={productScope} addToCart={this.addToCart}
                     alreadyInCart={this.alreadyInCart} cartIds={cart.map( (product) => { return product.id } )} />
